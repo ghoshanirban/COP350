@@ -15,7 +15,7 @@ public class TestShapes {
 
 		Square S = new Square(10.23);
 		System.out.println(S);
-		System.out.println(S instanceof Shape);
+		System.out.println(S instanceof Rectangle);
 
 //		Circle myCircle = new Circle(20.0, "Red", false);
 //		System.out.println(myCircle);

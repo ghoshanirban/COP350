@@ -28,6 +28,7 @@ public class IterableString implements Iterable<Character>{ // The iterator will
     public static class IterableStringIterator implements Iterator<Character> {
         int position;
         IterableString s;
+
         public IterableStringIterator(IterableString s) {
             this.s = s;
             position = 0;
