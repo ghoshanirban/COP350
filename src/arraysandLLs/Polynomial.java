@@ -98,6 +98,7 @@ public class Polynomial implements Cloneable, Iterable<Polynomial.PolynomialTerm
         return result;
     }
 
+    // Writes a polynomial to a text file
     public void sendToFile( String outputFilePath ) throws IOException {
         FileWriter fileOutput = new FileWriter(outputFilePath);
         fileOutput.write(L.size() + "\n" );
@@ -133,6 +134,6 @@ public class Polynomial implements Cloneable, Iterable<Polynomial.PolynomialTerm
 
     @Override
     public Iterator<PolynomialTerm> iterator() {
-        return L.iterator();
+        return L.iterator(); // reusing the iterator from the SinglyLinkedList class
     }
 }
