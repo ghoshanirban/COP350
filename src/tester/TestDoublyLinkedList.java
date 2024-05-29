@@ -6,6 +6,8 @@ import java.util.Iterator;
 
 public class TestDoublyLinkedList {
 	public static void main(String[] args)  {
+		int myVar = 99;
+
 		DoublyLinkedList<Character> myFirstDLL = new DoublyLinkedList<>();
 		
 //		for( Character c : myFirstDLL )

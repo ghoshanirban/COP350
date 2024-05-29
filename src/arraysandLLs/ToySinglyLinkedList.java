@@ -38,6 +38,7 @@ public class ToySinglyLinkedList {
 //        Node nodeT = new Node('T', null); // the tail
 //        nodeC.setNext(nodeT);
 
+        // Printing out the linked list created so far using a while-loop
         Node current = nodeX;
         while (current != null) {
             System.out.print(current.getElement());

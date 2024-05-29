@@ -27,17 +27,16 @@ public class CircularLinkedList<E> implements Iterable<E> {
 
     private Node<E> tail = null; // we maintain just the tail; head is not needed in our implementation
     // Note that tail.getNext() will give us the head
-    private int elementsStoredSoFar = 0;
+    private int size = 0;
 
-    public CircularLinkedList() {
-    }
+    public CircularLinkedList() { }
 
     public int size() {
-        return elementsStoredSoFar;
+        return size;
     }
 
     public boolean isEmpty() {
-        return elementsStoredSoFar == 0;
+        return size == 0;
     }
 
     public E first() { // returns the item stored inside the node right after the tail node (the virtual head)
@@ -60,7 +59,7 @@ public class CircularLinkedList<E> implements Iterable<E> {
     public void addFirst(E e) { // adds a node after the tail node
         Node<E> newest = new Node<>(e, null);
 
-        if (isEmpty()) {
+        if ( isEmpty() ) {
             tail = newest;
             tail.setNext(tail);
         } else {
@@ -68,7 +67,7 @@ public class CircularLinkedList<E> implements Iterable<E> {
             tail.setNext(newest);
         }
 
-        elementsStoredSoFar++;
+        size++;
     }
 
     public void addLast(E e) {  // adds a node after the tail node but the tail is set to the new node
@@ -87,7 +86,7 @@ public class CircularLinkedList<E> implements Iterable<E> {
         else
             tail.setNext(head.getNext()); // else, the next node of tail must be the next node of the head
 
-        elementsStoredSoFar--;
+        size--;
         return head.getElement();
     }
 

@@ -27,7 +27,6 @@ public class DoublyLinkedList<E> implements Iterable<E>{
 	public DoublyLinkedList() { }
 
 	public int size() { return size; }
-
 	public boolean isEmpty() { return size == 0; }
 
 	public E first() {
