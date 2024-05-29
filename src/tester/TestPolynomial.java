@@ -22,5 +22,8 @@ public class TestPolynomial {
         Polynomial r = new Polynomial("datasets/polyC.txt");
         System.out.println("r(x) = " + r);
         System.out.println("result + r = " + Polynomial.add(result,r));
+
+        for( var term : result )
+            System.out.println(term);
     }
 }

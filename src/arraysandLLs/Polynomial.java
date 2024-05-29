@@ -3,13 +3,13 @@ package arraysandLLs;
 import java.io.*;
 import java.util.*;
 //
-public class Polynomial implements Cloneable {// The cloneable interface helps to create clones of an object
+public class Polynomial implements Cloneable, Iterable<Polynomial.PolynomialTerm> { // The cloneable interface helps to create clones of an object
     /**
      *  A record class for representing the polynomial terms.
      *  Record classes are used for designing simple classes - no need to write constructors
      *  and getter/setter methods, and even the toString method. Those come with record classes for free!
      */
-    private record PolynomialTerm(int coefficient, int exponent) { }
+    public record PolynomialTerm(int coefficient, int exponent) { }
     SinglyLinkedList<PolynomialTerm> L = new SinglyLinkedList<>(); // A singly linked list to represent the polynomial
 
     private Polynomial() { } // creates and empty polynomial; used internally (is declared private)
@@ -129,5 +129,10 @@ public class Polynomial implements Cloneable {// The cloneable interface helps t
         }
 
         return str.toString();
+    }
+
+    @Override
+    public Iterator<PolynomialTerm> iterator() {
+        return L.iterator();
     }
 }
