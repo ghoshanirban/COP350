@@ -1,8 +1,10 @@
-package arraysandLLs;
+package tester;
 
 import java.util.concurrent.TimeUnit;
 
-public class SimulateGodzillaHigherFox {
+import stacksandqueues.BrowserTab;
+
+public class TestBrowserTab {
     public static void main(String[] args) throws InterruptedException {
         System.out.println(BrowserTab.getTimeStamp() + "Launching browser simulator...");
         BrowserTab newTab = new BrowserTab();

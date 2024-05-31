@@ -1,4 +1,4 @@
-package arraysandLLs;
+package stacksandqueues;
 
 import stacksandqueues.LinkedStack;
 
