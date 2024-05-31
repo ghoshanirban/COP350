@@ -1,7 +1,5 @@
 package stacksandqueues;
 
-import stacksandqueues.LinkedStack;
-
 import java.util.*;
 
 public class BrowserTab {
