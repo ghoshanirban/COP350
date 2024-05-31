@@ -34,14 +34,11 @@ public class Polynomial implements Cloneable, Iterable<Polynomial.PolynomialTerm
                 int coefficient = Integer.parseInt(items[0]), exponent = Integer.parseInt(items[1]);
                 L.addLast(new PolynomialTerm(coefficient, exponent));
             }
-
             fileInput.close();
         } catch (FileNotFoundException e) {
             System.out.print("The input file cannot be detected. Aborting!");
         }
     }
-
-
 
     @Override
     public Polynomial clone() throws CloneNotSupportedException {
@@ -54,7 +51,7 @@ public class Polynomial implements Cloneable, Iterable<Polynomial.PolynomialTerm
     }
 
     private boolean isZeroPolynomial() { // checks if 'p' is a zero polynomial
-        return L.isEmpty() ;
+        return L.size() == 1 && L.first().coefficient == 0 && L.first().exponent == 1;
     }
 
     public static Polynomial add(Polynomial p, Polynomial q) throws CloneNotSupportedException {

@@ -15,11 +15,9 @@ public class CircularLinkedList<E> implements Iterable<E> {
         public E getElement() {
             return element;
         }
-
         public Node<E> getNext() {
             return next;
         }
-
         public void setNext(Node<E> refToTheNextNode) {
             next = refToTheNextNode;
         }
