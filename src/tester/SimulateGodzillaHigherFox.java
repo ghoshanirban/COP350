@@ -28,6 +28,7 @@ public class SimulateGodzillaHigherFox {
         System.out.println(BrowserTab.getTimeStamp() + newTab);
         newTab.clickOnGoForward();
         System.out.println(BrowserTab.getTimeStamp() + newTab);
+        newTab.clickOnGoForward();
 
         System.out.println(BrowserTab.getTimeStamp() + "Terminating browser simulator. ");
     }

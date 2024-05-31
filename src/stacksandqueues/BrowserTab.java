@@ -1,18 +1,20 @@
 package arraysandLLs;
 
+import stacksandqueues.LinkedStack;
+
 import java.util.*;
 
 public class BrowserTab {
     String currentPage = "";
-    private final DoublyLinkedList<String> previousPages = new DoublyLinkedList<>(),
-                                               nextPages = new DoublyLinkedList<>();
+    private final LinkedStack<String> previousPages = new LinkedStack<>(),
+                                               nextPages = new LinkedStack<>();
     public static String getTimeStamp(){ return "[" + new Date() + "] "; }
 
     public BrowserTab() { System.out.println(getTimeStamp() + "New tab opened."); }
     
     public void typeAndGoNewSite(String newPage) {
         if( !currentPage.isEmpty() ) // some page is being viewed currently
-            previousPages.addLast(currentPage); // send the current page to the previousPages DLL
+            previousPages.push(currentPage); // send the current page to the previousPages DLL
 
         currentPage = newPage;
         System.out.println(getTimeStamp() + "Currently viewing: " + currentlyViewing());
@@ -24,11 +26,12 @@ public class BrowserTab {
             return;
         }
         else {
-            nextPages.addFirst(currentPage);
-            currentPage = previousPages.last();
-            previousPages.removeLast();
+            System.out.print(getTimeStamp() + "Back button is clicked. ");
+            nextPages.push(currentPage);
+            currentPage = previousPages.top();
+            previousPages.pop();
         }
-        System.out.println(getTimeStamp() + "Currently viewing: " + currentlyViewing());
+        System.out.println("Currently viewing: " + currentlyViewing());
     }
 
     public void clickOnGoForward() {
@@ -37,10 +40,10 @@ public class BrowserTab {
             return;
         }
         else {
-            previousPages.addLast(currentPage);
-            currentPage = nextPages.removeFirst();
+            previousPages.push(currentPage);
+            currentPage = nextPages.pop();
         }
-        System.out.println(getTimeStamp() + "Currently viewing: " + currentlyViewing());
+        System.out.println(getTimeStamp() + "Forward button is clicked. Currently viewing: " + currentlyViewing());
     }
 
     public String currentlyViewing() { return currentPage; }
