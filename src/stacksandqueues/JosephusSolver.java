@@ -2,7 +2,7 @@ package stacksandqueues;
 
 public class JosephusSolver {
     public static void main(String[] args) {
-        int n = 1000000, m = 15;
+        int n = 9, m = 2;
 
         LinkedQueue<Integer> Q = new LinkedQueue<>();
 
