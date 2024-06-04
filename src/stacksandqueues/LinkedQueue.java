@@ -6,7 +6,8 @@ import java.util.Iterator;
 
 public class LinkedQueue<E> implements QueueADT<E>, Iterable<E> {
 	final private SinglyLinkedList<E> L = new SinglyLinkedList<>();
-	
+
+	// Head is the front, Tail is the back
 	public void enqueue(E e) {
 		L.addLast(e);
 	}

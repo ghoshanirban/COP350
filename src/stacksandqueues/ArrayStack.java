@@ -3,12 +3,12 @@ package stacksandqueues;
 import java.util.Iterator;
 
 public class ArrayStack<E> implements StackADT<E>, Iterable<E>{
-	final private E[] items; // the array used to store the stack items
+	final private E[] A; // the array used to store the stack items
 	private int stackTop = -1; // stores the index of the top element
 
 	@SuppressWarnings("unchecked")
 	public ArrayStack(int capacity ) {
-		items = (E[]) new Object[capacity];
+		A = (E[]) new Object[capacity];
 	}
 	
 	public int size() {	return stackTop + 1; }
@@ -16,23 +16,23 @@ public class ArrayStack<E> implements StackADT<E>, Iterable<E>{
 	public boolean isEmpty() { return stackTop == -1; }
 	
 	public void push(E e) throws IllegalStateException{
-		if( size() == items.length )
+		if( size() == A.length )
 			throw new IllegalStateException("Oops! stack is full!");
-		items[++stackTop] = e;
+		A[++stackTop] = e;
 	}
 	
 	public E pop() {
 		if( isEmpty() )
 			return null;
 		
-		E answer = items[stackTop];
-		items[stackTop] = null;
+		E answer = A[stackTop];
+		A[stackTop] = null;
 		stackTop--;
 		return answer;
 	}
 	public E top() {
 		if( isEmpty() ) return null;
-		return items[stackTop];
+		return A[stackTop];
 	}
 
 	public Iterator<E> iterator() {
@@ -51,7 +51,7 @@ public class ArrayStack<E> implements StackADT<E>, Iterable<E>{
 		}
 
 		public E next() {
-			E hold = S.items[current];
+			E hold = S.A[current];
 			current++;
 			return hold;
 		}

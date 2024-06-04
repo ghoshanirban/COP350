@@ -3,12 +3,12 @@ package stacksandqueues;
 import java.util.Iterator;
 
 public class ArrayQueue<E> implements QueueADT<E>, Iterable<E> {
-	final private E[] data;
+	final private E[] A;
 	private int front = 0, size = 0;
 	
 	@SuppressWarnings("unchecked")
 	public ArrayQueue(int capacity) {
-		data = (E[]) new Object[capacity];
+		A = (E[]) new Object[capacity];
 	}
 	
 	public int size() {
@@ -23,15 +23,15 @@ public class ArrayQueue<E> implements QueueADT<E>, Iterable<E> {
 		if( isEmpty() )
 			return null;
 		
-		return data[front];
+		return A[front];
 	}
 	
 	public void enqueue(E e) throws IllegalStateException {
-		if( size == data.length )
+		if( size == A.length )
 			throw new IllegalStateException("Oops! queue is full.");
 		
-		int nextAvailableSpot = (front + size) % data.length;
-		data[nextAvailableSpot] = e;
+		int nextAvailableSpot = (front + size) % A.length;
+		A[nextAvailableSpot] = e;
 		size++;
 	}
 
@@ -39,9 +39,9 @@ public class ArrayQueue<E> implements QueueADT<E>, Iterable<E> {
 		if( isEmpty() )
 			return null;
 		
-		E answer = data[front];
-		data[front] = null; // optional
-		front = (front + 1) % data.length;
+		E answer = A[front];
+		A[front] = null; // optional
+		front = (front + 1) % A.length;
 		size--;
 		return answer;
 	}
@@ -64,8 +64,8 @@ public class ArrayQueue<E> implements QueueADT<E>, Iterable<E> {
 		}
 
 		public E next() {
-			E hold = Q.data[current];
-			current = (current + 1) % Q.data.length;
+			E hold = Q.A[current];
+			current = (current + 1) % Q.A.length;
 			elementsMetSoFar++;
 			return hold;
 		}
