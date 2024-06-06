@@ -8,7 +8,7 @@ public class Factorial {
 		else if( n == 0 || n == 1 ) // base cases
 			return 1;
 		else
-			return n + factorial(n-1); // recursive call
+			return n * factorial(n-1); // recursive call
 	}
 	
 	public static void main(String[] args) {
