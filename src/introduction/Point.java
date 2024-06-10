@@ -1,7 +1,10 @@
 
 package introduction;
 
+import java.util.Arrays;
+
 public class Point {
+
     public static Integer pointsCreated = 0; // a class-wide common variable
     Double x, y; // instance variables
 

@@ -33,11 +33,9 @@ public class TestBinaryTree {
 		System.out.print("\nPostOrder: ");
 		T.printPostOrder();
 		
-		System.out.print("\nNumber of nodes in the tree: " + T.countNodes( T.getRoot() ) + "\n");
+		System.out.print("\nNumber of nodes in the tree: " + T.countNodes() + "\n");
 
 		for( var item : T ) // Using the inorder iterator for the binary tree class
 			System.out.print(item + " ");
-
-		System.out.println(T.doSomething());
 	}
 }

@@ -24,8 +24,7 @@ public class BinaryTree<E> implements Iterable<E>{
 	
 	public BinaryTree() { }
 	public boolean isEmpty() { return root == null; }
-	public BinaryTreeNode<E> getRoot() { return root; }
-	
+
 	//========================================================
 	public void printPreOrder() {
 		preOrder(root);
@@ -98,22 +97,15 @@ public class BinaryTree<E> implements Iterable<E>{
 		}
 	}
 	//========================================================
-	public int countNodes(BinaryTreeNode<E> n) {
+	public int countNodes() {
+		return countNodesRec(root);
+	}
+
+	private int countNodesRec(BinaryTreeNode<E> n) {
 		if( n == null ) return 0;
-		else return countNodes(n.left) + countNodes(n.right) + 1;
+		else return countNodesRec(n.left) + countNodesRec(n.right) + 1;
 	}
 	//========================================================
-	private int doSomethingRecur(BinaryTreeNode<E> n) {
-		if (n.left == null && n.right == null ) return 1;
-		else if (n.left != null && n.right == null) return doSomethingRecur(n.left);
-		else if (n.left == null && n.right != null) return doSomethingRecur(n.right);
-		else return doSomethingRecur(n.left) + doSomethingRecur(n.right);
-	}
-
-	public int doSomething() {
-		return doSomethingRecur(root);
-	}
-
 
 	public Iterator<E> iterator() {
 		return new BinaryTreeIterator<>(this);

@@ -16,7 +16,7 @@ public class MergeSort {
 		merge(S1, S2, S); // merge S1, S2 into S
 	}
 
-	private static <K extends Comparable<K> > void merge(K[] leftSequence, K[] rightSequence, K[] outputSequence) {
+	private static <K extends Comparable<K>> void merge(K[] leftSequence, K[] rightSequence, K[] outputSequence) {
 		int i = 0; // index into leftSequence
 		int j = 0; // index into rightSequence
 		int k = 0; // index into outputSequence

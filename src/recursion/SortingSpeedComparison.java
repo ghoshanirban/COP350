@@ -17,17 +17,17 @@ public class SortingSpeedComparison {
 		Arrays.sort(arr1); Arrays.sort(arr2); Arrays.sort(arr3); Arrays.sort(arr4);
 		Arrays.sort(arr5); Arrays.sort(arr6); Arrays.sort(arr7); Arrays.sort(arr8);
 
-//		long start = System.currentTimeMillis();
-//		QuickSort.sort(arr1);
-//		System.out.println("Time taken by QuickSort (O(n^2)): " + (System.currentTimeMillis() - start) + " ms");
-
 		long start = System.currentTimeMillis();
-		NonRecursiveQuickSort.sort(arr2);
-		System.out.println("Time taken by NonRecursiveQuickSort (O(n^2)): " + (System.currentTimeMillis() - start) + " ms" );
+		QuickSort.sort(arr1);
+		System.out.println("Time taken by QuickSort (O(n^2)): " + (System.currentTimeMillis() - start) + " ms");
 
-		start = System.currentTimeMillis();
-		NonRecursiveRandomizedQuickSort.sort(arr3);
-		System.out.println("Time taken by NonRecursiveRandomizedQuickSort (O(n log n) behavior expected): " + (System.currentTimeMillis() - start) + " ms" );
+//		long start = System.currentTimeMillis();
+//		NonRecursiveQuickSort.sort(arr2);
+//		System.out.println("Time taken by NonRecursiveQuickSort (O(n^2)): " + (System.currentTimeMillis() - start) + " ms" );
+
+//		start = System.currentTimeMillis();
+//		NonRecursiveRandomizedQuickSort.sort(arr3);
+//		System.out.println("Time taken by NonRecursiveRandomizedQuickSort (O(n log n) behavior expected): " + (System.currentTimeMillis() - start) + " ms" );
 //
 //		start = System.currentTimeMillis();
 //		MedOfThreeNonRecQuickSort.sort(arr4);
