@@ -224,25 +224,24 @@ public class TreeSetRBTree<E extends Comparable<E>> implements Iterable<E> { // 
     }
 
     public static class TreeSetIterator<E extends Comparable<E>> implements Iterator<E> {
-        private Node<E> x;
+        private Node<E> current;
         private final LinkedStack<Node<E>> stack = new LinkedStack<>();
-        public TreeSetIterator(TreeSetRBTree<E> S)   {
-            stack.push(S.root);
-            x = S.root.left;
+        public TreeSetIterator(TreeSetRBTree<E> T)   {
+            current = T.root;
         }
 
         public boolean hasNext()  {
-            return x != null || !stack.isEmpty();
+            return current != null || !stack.isEmpty();
         }
 
         public E next() {
-            while (x !=  null) { // keep on moving left and stop when stuck
-                stack.push(x);
-                x = x.left;
+            while (current !=  null) { // keep on moving left and stop when stuck
+                stack.push(current);
+                current = current.left;
             }
-            x = stack.pop(); // pop an item
-            E data = x.item;
-            x = x.right; // traverse its right subtree
+            current = stack.pop(); // pop an item
+            E data = current.item;
+            current = current.right; // traverse its right subtree
             return data;
         }
     }

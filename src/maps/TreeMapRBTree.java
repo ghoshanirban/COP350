@@ -267,9 +267,8 @@ public class TreeMapRBTree<K extends Comparable<K>, V> implements MapADT<K,V>, I
     public static class TreeMapRBTreeIterator<K extends Comparable<K>, V> implements Iterator<SimpleEntry<K,V>> {
         private Node<K,V> current;
         private final LinkedStack<Node<?,?>> stack = new LinkedStack<>();
-        public TreeMapRBTreeIterator(TreeMapRBTree<?,?> S)   {
-            stack.push(S.root);
-            current = (Node<K, V>) S.root.left;
+        public TreeMapRBTreeIterator(TreeMapRBTree<?,?> T)   {
+            current = (Node<K, V>) T.root;
         }
 
         public boolean hasNext()  {

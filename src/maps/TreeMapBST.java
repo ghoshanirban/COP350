@@ -249,25 +249,24 @@ public class TreeMapBST<K extends Comparable<K>, V> implements MapADT<K,V>, Iter
     }
 
     public static class TreeMapIterator<K extends Comparable<K>, V> implements Iterator<SimpleEntry<K,V>> {
-        private Node<K,V> x;
+        private Node<K,V> current;
         private final LinkedStack<Node<?,?>> stack = new LinkedStack<>();
-        public TreeMapIterator(TreeMapBST<?,?> S)   {
-            stack.push(S.root);
-            x = (Node<K, V>) S.root.left;
+        public TreeMapIterator(TreeMapBST<?,?> T)   {
+            current = (Node<K, V>) T.root;
         }
 
         public boolean hasNext()  {
-            return x != null || !stack.isEmpty();
+            return current != null || !stack.isEmpty();
         }
 
         public SimpleEntry<K,V> next() {
-            while (x !=  null) { // keep on moving left and stop when stuck
-                stack.push(x);
-                x = x.left;
+            while (current !=  null) { // keep on moving left and stop when stuck
+                stack.push(current);
+                current = current.left;
             }
-            x = (Node<K, V>) stack.pop(); // pop an item
-            SimpleEntry<K,V> data = new SimpleEntry<>( x.key, x.val);
-            x = x.right; // traverse its right subtree
+            current = (Node<K, V>) stack.pop(); // pop an item
+            SimpleEntry<K,V> data = new SimpleEntry<>( current.key, current.val);
+            current = current.right; // traverse its right subtree
             return data;
         }
     }

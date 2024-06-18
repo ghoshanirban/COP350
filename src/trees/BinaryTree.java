@@ -25,6 +25,20 @@ public class BinaryTree<E> implements Iterable<E>{
 	public BinaryTree() { }
 	public boolean isEmpty() { return root == null; }
 
+
+	//========================================================
+	public void printInOrder() {
+		inOrder(root);
+	}
+
+	private void inOrder(BinaryTreeNode<E> n) {
+		if( n == null )
+			return;
+
+		inOrder(n.getLeft());
+		System.out.print(" " + n.getElement() + " " );
+		inOrder(n.getRight());
+	}
 	//========================================================
 	public void printPreOrder() {
 		preOrder(root);
@@ -37,19 +51,6 @@ public class BinaryTree<E> implements Iterable<E>{
 		System.out.print(" " + n.getElement() + " " );
 		preOrder(n.getLeft());
 		preOrder(n.getRight());
-	}
-	//========================================================
-	public void printInOrder() {
-		inOrder(root);
-	}
-		
-	private void inOrder(BinaryTreeNode<E> n) {
-		if( n == null )
-			return;
-		
-		inOrder(n.getLeft());
-		System.out.print(" " + n.getElement() + " " );
-		inOrder(n.getRight());
 	}
 	//========================================================
 	public void printPostOrder() {
@@ -106,31 +107,45 @@ public class BinaryTree<E> implements Iterable<E>{
 		else return countNodesRec(n.left) + countNodesRec(n.right) + 1;
 	}
 	//========================================================
+	public void printInOrderIterative() {
+		BinaryTreeNode<E> current = root;
+		LinkedStack<BinaryTreeNode<E>> stack = new LinkedStack<>();
+
+		while( current != null || !stack.isEmpty() ) {
+			while (current != null) { // keep on moving left and stop when stuck
+				stack.push(current);
+				current = current.left;
+			}
+			current = stack.pop(); // pop an item
+			System.out.print(" " + current.getElement() + " " );
+			current = current.right; //
+		}
+	}
+	//========================================================
 
 	public Iterator<E> iterator() {
 		return new BinaryTreeIterator<>(this);
 	}
 
 	public static class BinaryTreeIterator<E> implements Iterator<E> {
-		private BinaryTreeNode<E> x;
+		private BinaryTreeNode<E> current;
 		private final LinkedStack<BinaryTreeNode<E>> stack = new LinkedStack<>();
-		public BinaryTreeIterator(BinaryTree<E> S)   {
-			stack.push(S.root);
-			x = S.root.left;
+		public BinaryTreeIterator(BinaryTree<E> T)   {
+			current = T.root; // set current to the root
 		}
 
 		public boolean hasNext()  {
-			return x != null || !stack.isEmpty();
+			return current != null || !stack.isEmpty();
 		}
 
 		public E next() {
-			while (x !=  null) { // keep on moving left and stop when stuck
-				stack.push(x);
-				x = x.left;
+			while (current !=  null) { // keep on moving left and stop when stuck
+				stack.push(current);
+				current = current.left;
 			}
-			x = stack.pop(); // pop an item
-			E data = x.element;
-			x = x.right; // traverse its right subtree
+			current = stack.pop(); // pop an item
+			E data = current.element;
+			current = current.right; // traverse its right subtree
 			return data;
 		}
 	}

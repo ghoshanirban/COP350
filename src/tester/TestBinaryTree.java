@@ -22,6 +22,9 @@ public class TestBinaryTree {
 		
 		System.out.print("\nInOrder: ");
 		cityTree.printInOrder();
+
+		System.out.print("\nInOrder: ");
+		cityTree.printInOrderIterative();
 		
 		System.out.print("\nPostOrder: ");
 		cityTree.printPostOrder();
