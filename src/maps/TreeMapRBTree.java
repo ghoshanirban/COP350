@@ -5,7 +5,7 @@ import java.util.AbstractMap.SimpleEntry;
 import java.util.Iterator;
 
 @SuppressWarnings({"SuspiciousNameCombination","unchecked"}) // for suppressing unnecessary variable name warnings
-public class TreeMapRBTree<K extends Comparable<K>, V> implements Iterable< SimpleEntry<K,V> >{
+public class TreeMapRBTree<K extends Comparable<K>, V> implements MapADT<K,V>, Iterable< SimpleEntry<K,V> >{
                                                          // Since the remove method is missing, we are
                                                          // unable to implement the MapADT interface
     private static final boolean RED = false, BLACK = true;
@@ -186,6 +186,11 @@ public class TreeMapRBTree<K extends Comparable<K>, V> implements Iterable< Simp
         root.color = BLACK; // color the root BLACK
         return true;
     }
+
+    public V remove(K key) {
+        throw new IllegalStateException("RB-Tree deletion is not covered in this course.");
+    }
+
     //**********************************************************//
     // returns the value part of the record whose key is 'key'
     public V get(K key) {
@@ -260,25 +265,25 @@ public class TreeMapRBTree<K extends Comparable<K>, V> implements Iterable< Simp
     }
 
     public static class TreeMapRBTreeIterator<K extends Comparable<K>, V> implements Iterator<SimpleEntry<K,V>> {
-        private Node<K,V> x;
+        private Node<K,V> current;
         private final LinkedStack<Node<?,?>> stack = new LinkedStack<>();
         public TreeMapRBTreeIterator(TreeMapRBTree<?,?> S)   {
             stack.push(S.root);
-            x = (Node<K, V>) S.root.left;
+            current = (Node<K, V>) S.root.left;
         }
 
         public boolean hasNext()  {
-            return x != null || !stack.isEmpty();
+            return current != null || !stack.isEmpty();
         }
 
         public SimpleEntry<K,V> next() {
-            while (x !=  null) { // keep on moving left and stop when stuck
-                stack.push(x);
-                x = x.left;
+            while (current !=  null) { // keep on moving left and stop when stuck
+                stack.push(current);
+                current = current.left;
             }
-            x = (Node<K, V>) stack.pop(); // pop an item
-            SimpleEntry<K,V> data = new SimpleEntry<>( x.key, x.val);
-            x = x.right; // traverse its right subtree
+            current = (Node<K, V>) stack.pop(); // pop an item
+            SimpleEntry<K,V> data = new SimpleEntry<>( current.key, current.val);
+            current = current.right; // traverse its right subtree
             return data;
         }
     }
