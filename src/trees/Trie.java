@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Trie implements Iterable<String> { // This code works only on English words
                                                 // made up of letters only.
-    private static class TrieNode {
+    private static class TrieNode { // The node class for the Trie
         String word = null;
         TrieNode parent = null;
         TrieNode[] children = new TrieNode[26]; // every cell contains a 'null'

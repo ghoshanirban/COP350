@@ -4,38 +4,31 @@ import trees.BinaryTree;
 
 public class TestBinaryTree {
 	public static void main(String[] args) {
-		BinaryTree<Character> T = new BinaryTree<>();
-		
-		T.insert('A',"root");
-		T.insert('B', "0");
-		T.insert('K', "1");
-		T.insert('C', "00");
-		T.insert('H', "01");
-		T.insert('L', "10");
-		T.insert('N', "11");
-		T.insert('D', "000");
-		T.insert('G', "001");
-		T.insert('I', "010");
-		T.insert('J', "011");
-		T.insert('M', "100");
-		T.insert('S', "101");
-		T.insert('O', "110");
-		T.insert('P', "111");
-		T.insert('E', "0000");
-		T.insert('F', "0001");
+		BinaryTree<String> cityTree = new BinaryTree<>();
+
+		cityTree.insert("Jacksonville","root");
+		cityTree.insert("Atlanta", "0");
+		cityTree.insert("Miami", "1");
+		cityTree.insert("Orlando", "00");
+		cityTree.insert("Tampa", "01");
+		cityTree.insert("Charleston", "010");
+		cityTree.insert("NYC", "10");
+		cityTree.insert("New Jersey", "11");
+		cityTree.insert("Sarasota", "100");
+		cityTree.insert("Destin", "101");
 
 		System.out.print("PreOrder: ");
-		T.printPreOrder();
+		cityTree.printPreOrder();
 		
 		System.out.print("\nInOrder: ");
-		T.printInOrder();
+		cityTree.printInOrder();
 		
 		System.out.print("\nPostOrder: ");
-		T.printPostOrder();
+		cityTree.printPostOrder();
 		
-		System.out.print("\nNumber of nodes in the tree: " + T.countNodes() + "\n");
+		System.out.print("\nNumber of nodes in the tree: " + cityTree.countNodes() + "\n");
 
-		for( var item : T ) // Using the inorder iterator for the binary tree class
+		for( var item : cityTree ) // Using the inorder iterator for the binary tree class
 			System.out.print(item + " ");
 	}
 }

@@ -9,7 +9,7 @@ public class TestTrie {
 
         Trie dictionary = new Trie();
 
-        // source: https://github.com/dwyl/english-words, contains 370,104 words
+        // source: https://github.com/dwyl/english-words, contains 370,105 words
         dictionary.loadWordsFromFile("datasets/words_alpha.txt");
         System.out.println( "Number of words in the trie: " + dictionary.numberOfWords() );
         System.out.println("Number of nodes in the trie: " + dictionary.numberOfNodes());
