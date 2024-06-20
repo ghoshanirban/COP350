@@ -23,7 +23,7 @@ public class TreeMapBST<K extends Comparable<K>, V> implements MapADT<K,V>, Iter
     }
 
     private Node<K, V> root; // the root node
-    private int numberOfNodes = 0; // stores the number of nodes/records
+    private int nodeCount = 0; // stores the number of nodes/records
     public TreeMapBST() { } // an empty constructor
 
     public boolean isEmpty() {
@@ -78,7 +78,7 @@ public class TreeMapBST<K extends Comparable<K>, V> implements MapADT<K,V>, Iter
 
         if( isEmpty() ) {
             root = newNode;
-            numberOfNodes++;
+            nodeCount++;
             return true;
         }
 
@@ -103,7 +103,7 @@ public class TreeMapBST<K extends Comparable<K>, V> implements MapADT<K,V>, Iter
         // insert the new record as a left/right child
         if( isLeftChild )  parentOfCurrent.left  = newNode;
         else               parentOfCurrent.right = newNode;
-        numberOfNodes++;
+        nodeCount++;
         return true;
     }
 
@@ -199,7 +199,7 @@ public class TreeMapBST<K extends Comparable<K>, V> implements MapADT<K,V>, Iter
     //**********************************************************//
 
     // returns the number of records stored in the tree
-    public int size() { return numberOfNodes; }
+    public int size() { return nodeCount; }
 
     //**********************************************************//
     // puts the keys from all records in an arraylist
@@ -233,7 +233,7 @@ public class TreeMapBST<K extends Comparable<K>, V> implements MapADT<K,V>, Iter
     //**********************************************************//
     // clears the binary search tree
     public void clear() {
-        root = null; numberOfNodes = 0;
+        root = null; nodeCount = 0;
     }
     //**********************************************************//
     // find height of the binary search tree

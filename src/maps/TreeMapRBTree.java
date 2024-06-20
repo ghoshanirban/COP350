@@ -29,7 +29,7 @@ public class TreeMapRBTree<K extends Comparable<K>, V> implements MapADT<K,V>, I
     }
 
     private Node<K, V> root; // the root node
-    private int numberOfNodes = 0; // stores the number of nodes/records
+    private int nodeCount = 0; // stores the number of nodes/records
     public TreeMapRBTree() { }
 
     public void turnOnCaseTracing() { CASE_TRACING = true; }
@@ -106,7 +106,7 @@ public class TreeMapRBTree<K extends Comparable<K>, V> implements MapADT<K,V>, I
                 System.out.println(" Inserting the root node ");
             root = z;
             root.color = BLACK;
-            numberOfNodes++;
+            nodeCount++;
             return true;
         }
 
@@ -133,7 +133,7 @@ public class TreeMapRBTree<K extends Comparable<K>, V> implements MapADT<K,V>, I
         if( isLeftChild )  parentOfCurrent.left  = z;
         else               parentOfCurrent.right = z;
 
-        numberOfNodes++;
+        nodeCount++;
 
         if(CASE_TRACING && z.parent.color == BLACK )
             System.out.println(" No case execution is needed since parent in BLACK");
@@ -232,12 +232,12 @@ public class TreeMapRBTree<K extends Comparable<K>, V> implements MapADT<K,V>, I
     //**********************************************************//
     // returns the number of records stored in the tree
     public int size() {
-        return numberOfNodes;
+        return nodeCount;
     }
     //**********************************************************//
     // clears the binary search tree
     public void clear() {
-        root = null; numberOfNodes = 0;
+        root = null; nodeCount = 0;
     }
     //**********************************************************//
     // find height of the binary search tree
