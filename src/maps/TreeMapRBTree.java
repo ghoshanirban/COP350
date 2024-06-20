@@ -1,7 +1,7 @@
 package maps;
 
 import stacksandqueues.LinkedStack;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.AbstractMap.SimpleEntry; // need for using the SimpleEntry class (a record class)
 import java.util.Iterator;
 
 @SuppressWarnings({"SuspiciousNameCombination","unchecked"}) // for suppressing unnecessary variable name warnings
