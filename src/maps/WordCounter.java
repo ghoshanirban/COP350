@@ -16,7 +16,7 @@ public class WordCounter {
 				 if( Character.isLetter( line.charAt(i) ) )
 					 s.append( Character.toLowerCase( line.charAt(i) ) );
 				 else {
-					 if( s.length() >= 1) 
+					 if(!s.isEmpty())
 						 add(s.toString());
 					 s.setLength(0);
 				 }
