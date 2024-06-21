@@ -13,8 +13,13 @@ public class TestTreeMapRBTree {
         T.put(31, "Caroline");
         T.put(12, "Tom");
         T.put(19, "Ann");
-        T.put(8, "Jennifer");
+        T.put(8, "Natasha");
+        T.put(7, "Lisa");
+        T.put(6, "Kurt");
 
+
+
+        System.out.println();
         for(var record : T )
             System.out.println(record.getKey() + ", " + record.getValue());
 
