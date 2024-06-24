@@ -2,21 +2,7 @@ package tester;
 
 import sets.*;
 
-import java.util.ArrayList;
-
 public class TestTreeSetRBTree {
-    public static boolean whatIsMyPurpose(ArrayList<Integer> A, ArrayList<Integer> B) {
-        var H = new TreeSetRBTree<Integer>();
-
-        for(var integer : A)
-            H.add(integer);
-
-        for(var integer : B)
-            if(H.contains(integer))
-                return false;
-
-        return true;
-    }
     public static void main(String[] args) {
         TreeSetRBTree<Integer> S = new TreeSetRBTree<>(), T = new TreeSetRBTree<>();
         //============================= set union ===============================//

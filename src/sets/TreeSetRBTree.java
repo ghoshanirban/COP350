@@ -1,11 +1,10 @@
 package sets;
 
 import stacksandqueues.LinkedStack;
-
 import java.util.Iterator;
 
 @SuppressWarnings("SuspiciousNameCombination") // for suppressing unnecessary variable name warnings
-public class TreeSetRBTree<E extends Comparable<E>> implements Iterable<E> { // Since the remove method is missing, we are
+public class TreeSetRBTree<E extends Comparable<E>> implements SetADT<E>, Iterable<E> { // Since the remove method is missing, we are
                                                          // unable to implement the MapADT interface
     private static final boolean RED = false, BLACK = true;
 
@@ -25,7 +24,7 @@ public class TreeSetRBTree<E extends Comparable<E>> implements Iterable<E> { // 
     }
 
     private Node<E> root; // the root node
-    private int numberOfNodes = 0; // stores the number of nodes/records
+    private int nodeCount = 0; // stores the number of nodes/records
     public TreeSetRBTree() { }
 
     //**********************************************************//
@@ -96,7 +95,7 @@ public class TreeSetRBTree<E extends Comparable<E>> implements Iterable<E> { // 
         if( isEmpty() ) {
             root = z;
             root.color = BLACK;
-            numberOfNodes++;
+            nodeCount++;
             return true;
         }
 
@@ -123,7 +122,7 @@ public class TreeSetRBTree<E extends Comparable<E>> implements Iterable<E> { // 
         if( isLeftChild )  parentOfCurrent.left  = z;
         else               parentOfCurrent.right = z;
 
-        numberOfNodes++;
+        nodeCount++;
 
         // Fixing up the tree by climbing up
         // This part of the code has been inspired from the pseudocode presented in the
@@ -159,15 +158,29 @@ public class TreeSetRBTree<E extends Comparable<E>> implements Iterable<E> { // 
         root.color = BLACK; // color the root BLACK
         return true;
     }
+
+    public void addAll(SetADT<E> S) { // S = S union T
+        for(var e : S)
+            add(e);
+    }
+
+    public void removeAll(SetADT<E> S) {
+        throw new IllegalStateException("Items cannot be removed since RB-Tree deletion is out of scope");
+    }
+
+    public boolean remove(E e) {
+        throw new IllegalStateException("Items cannot be removed since RB-Tree deletion is out of scope");
+    }
+
     //**********************************************************//
     // returns the number of records stored in the tree
     public int size() {
-        return numberOfNodes;
+        return nodeCount;
     }
     //**********************************************************//
     // clears the binary search tree
     public void clear() {
-        root = null; numberOfNodes = 0;
+        root = null; nodeCount = 0;
     }
     //**********************************************************//
     public boolean contains(E e) { // runs in O(log n) time since a RB-Tree is being used
@@ -195,7 +208,7 @@ public class TreeSetRBTree<E extends Comparable<E>> implements Iterable<E> { // 
             add(e); // duplicates won't get added in the tree
     }
 
-    public void retainAll(TreeSetRBTree<E> T) { // S = S intersection T
+    public void retainAll(SetADT<E> T) { // S = S intersection T
         TreeSetRBTree<E> tempS = new TreeSetRBTree<>();
 
         for( var e : this )
@@ -203,21 +216,9 @@ public class TreeSetRBTree<E extends Comparable<E>> implements Iterable<E> { // 
                 tempS.add(e);
 
         root = tempS.root;
-        numberOfNodes = tempS.numberOfNodes;
+        nodeCount = tempS.nodeCount;
     }
 
-
-
-    public void removeAll(TreeSetRBTree<E> T) { // S = S difference T
-        TreeSetRBTree<E> tempS = new TreeSetRBTree<>();
-
-        for(var e : this)
-            if( !T.contains(e) )
-                tempS.add(e);
-
-        root = tempS.root;
-        numberOfNodes = tempS.numberOfNodes;
-    }
     /**************************************************/
     public Iterator<E> iterator() {
         return new TreeSetIterator<>(this);

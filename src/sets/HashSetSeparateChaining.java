@@ -3,7 +3,7 @@ package sets;
 import java.util.*;
 
 @SuppressWarnings("unchecked")
-public class HashSetSeparateChaining<E> implements Iterable<E>  {
+public class HashSetSeparateChaining<E> implements SetADT<E>, Iterable<E>  {
     final double desiredLoadFactor = 0.75; // Java chose this number in their implementation
     final private int initialNumberOfBuckets = 16; // Java chose this number in their implementation
 
@@ -77,7 +77,6 @@ public class HashSetSeparateChaining<E> implements Iterable<E>  {
             }
             return str.toString();
         }
-
     }
     //****************************************************//
     SinglyLinkedList<E>[] buckets;
@@ -183,6 +182,10 @@ public class HashSetSeparateChaining<E> implements Iterable<E>  {
         //**********************************************************//
     }
 
+    public boolean isEmpty() {
+        return size() == 0;
+    }
+
     public boolean contains(E e) {
         int hashCode = e.hashCode(), bucketIndex = compressionFunction(hashCode, buckets.length);
         for( var item : buckets[bucketIndex] )
@@ -199,12 +202,12 @@ public class HashSetSeparateChaining<E> implements Iterable<E>  {
         return null;
     }
 
-    public void addAll(HashSetSeparateChaining<E> T) { // S = S union T
+    public void addAll(SetADT<E> T) { // S = S union T
         for(var e : T)
             add(e);
     }
 
-    public void retainAll(HashSetSeparateChaining<E> T) { // S = S intersect T
+    public void retainAll(SetADT<E> T) { // S = S intersect T
         HashSetSeparateChaining<E> tempS = new HashSetSeparateChaining<>();
 
         for(var e : this)
@@ -215,7 +218,7 @@ public class HashSetSeparateChaining<E> implements Iterable<E>  {
         numberOfRecordsPresent = tempS.numberOfRecordsPresent;
     }
 
-    public void removeAll(HashSetSeparateChaining<E> T) { // S = S difference T
+    public void removeAll(SetADT<E> T) { // S = S difference T
         HashSetSeparateChaining<E> tempS = new HashSetSeparateChaining<>();
 
         for(var e : this)
