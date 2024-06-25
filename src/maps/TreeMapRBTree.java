@@ -42,11 +42,9 @@ public class TreeMapRBTree<K extends Comparable<K>, V> implements MapADT<K,V>, I
     private boolean isLeftChild( Node<K,V> node ) {
         return node.parent != null && node.parent.left == node;
     }
-
     private boolean isRightChild( Node<K,V> node ) {
         return node.parent != null && node.parent.right == node;
     }
-
     private Node<K,V> grandParent( Node<K,V> node ){
         return node.parent.parent;
     }
@@ -155,13 +153,13 @@ public class TreeMapRBTree<K extends Comparable<K>, V> implements MapADT<K,V>, I
                 boolean isCase2 = false;
                 if( isLeftChild(z.parent) && isRightChild(z) ) {
                     isCase2 = true;                                                                 // Case 2
-                    if( CASE_TRACING ) System.out.println(" Using Case 2a");                         // Case 2
+                    if( CASE_TRACING ) System.out.println(" Using Case 2a");                        // Case 2
                     z = z.parent;                                                                   // Case 2
                     leftRotateAt(z);                                                                // Case 2
                 }                                                                                   // Case 2
                 else if ( isRightChild(z.parent) && isLeftChild(z) ) {                              // Case 2
                     isCase2 = true;                                                                 // Case 2
-                    if( CASE_TRACING ) System.out.println(" Using Case 2b");                         // Case 2
+                    if( CASE_TRACING ) System.out.println(" Using Case 2b");                        // Case 2
                     z = z.parent;                                                                   // Case 2
                     rightRotateAt(z);                                                               // Case 2
                 }

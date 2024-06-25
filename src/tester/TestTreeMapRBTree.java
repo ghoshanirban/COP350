@@ -6,7 +6,7 @@ public class TestTreeMapRBTree {
     public static void main(String[] args) {
         TreeMapRBTree<Integer,String> T = new TreeMapRBTree<>();
 
-        T.turnOnCaseTracing();
+        T.turnOnCaseTracing(); // will show the cases during insertion
 
         T.put(41, "Eric");
         T.put(38, "Pat");
@@ -16,8 +16,6 @@ public class TestTreeMapRBTree {
         T.put(8, "Natasha");
         T.put(7, "Lisa");
         T.put(6, "Kurt");
-
-
 
         System.out.println();
         for(var record : T )
