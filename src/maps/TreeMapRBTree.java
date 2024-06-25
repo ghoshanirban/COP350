@@ -9,7 +9,7 @@ public class TreeMapRBTree<K extends Comparable<K>, V> implements MapADT<K,V>, I
                                                          // Since the remove method is missing, we are
                                                          // unable to implement the MapADT interface
     private static final boolean RED = false, BLACK = true;
-    private boolean CASE_TRACING = false;
+    private boolean CASE_TRACING = false; // by default is turned off
     private static class Node<K, V> {
         final private K key;
         private V val;
