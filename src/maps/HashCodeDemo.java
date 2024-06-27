@@ -4,7 +4,7 @@ import introduction.Point;
 
 public class HashCodeDemo {
 	public static void main(String[] args) {
-		String s1 = "Prof. Anirban Ghosh";
+		String s1 = "UNF is FUN";
 		String s2 = "FUN is UNF";
 		String s3 = "UNF iss FUN";
 		System.out.println(s1.hashCode() + " ");
