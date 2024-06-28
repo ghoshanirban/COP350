@@ -9,6 +9,7 @@ public class HashMapSeparateChaining<K,V> implements Iterable<SimpleEntry<K,V>>,
     final int initialNumberOfBuckets = 16; // Java chose this number in their implementation
 
     //****************************************************//
+    //A singly-linked list class to represent the buckets, containing records
     private static class RecordsSinglyLinkedList<K,V> implements Iterable<SimpleEntry<K,V>> {
         protected static class Node<K,V> {
             final SimpleEntry<K,V> rec;
