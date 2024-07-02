@@ -115,20 +115,20 @@ public class HashMapSeparateChaining<K,V> implements Iterable<SimpleEntry<K,V>>,
         return ( Math.abs(x) % N );
     }
 
-    public boolean put(K key, V value){
-        if(key == null)   throw new IllegalArgumentException("Key cannot be null.");
+    public boolean put(K k, V value){
+        if(k == null)   throw new IllegalArgumentException("Key cannot be null.");
         if(value == null) throw new IllegalArgumentException("Value cannot be null.");
 
-        int hashCode = key.hashCode(), bucketIndex = compressionFunction(hashCode, buckets.length);
+        int hashCode = k.hashCode(), bucketIndex = compressionFunction(hashCode, buckets.length);
 
-        for( var record : buckets[bucketIndex])
-            if( record.getKey().equals(key) )
+        for( var record : buckets[bucketIndex]) // check if a record with key 'k' already exists
+            if( record.getKey().equals(k) )
                 return false;
 
-        buckets[ bucketIndex ].addLast(new SimpleEntry<>(key,value));
+        buckets[ bucketIndex ].addLast(new SimpleEntry<>(k,value)); // add the new record at the end of the list
         numberOfRecordsPresent++;
 
-        if( loadFactor() > desiredLoadFactor )
+        if( loadFactor() > desiredLoadFactor ) // rehash if required
             rehash();
 
         return true;
